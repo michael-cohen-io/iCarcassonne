@@ -9,32 +9,45 @@
 import Foundation
 
 
-class Tile: Prototype, CustomStringConvertible {
+class Tile: Prototype, CustomStringConvertible, Equatable {
     
     //Tile attributes
-    let terrain: TerrainType 
+    var terrains: [String: TerrainType]
     var meeple: Meeple?
     
     //Printable attributes
     var description: String {
-        var desc = "Tile: Type = \(self.terrain)"
+        var desc = "Tile: "
         if let meep = self.meeple {
-            desc += ", Meeple = \(meep)"
+            desc += "Meeple = \(meep)"
         }
+        
+        desc += "Terrains: ["
+        for (side, type) in terrains {
+            desc += " \(side): \(type),"
+        }
+        desc.remove(at: desc.index(before: desc.endIndex))
+        desc += "]"
+        
         
         return desc
     }
     
+    // NULL init
     init() {
-        terrain = .NullTerrain
+        terrains = [String: TerrainType]()
+        terrains["UP"] = .NullTerrain
+        terrains["Down"] = .NullTerrain
+        terrains["Right"] = .NullTerrain
+        terrains["Left"] = .NullTerrain
     }
     
-    init(withTerrain t: TerrainType) {
-        terrain = t
+    init(withTerrains t: [String: TerrainType]) {
+        terrains = t
     }
     
-    init(withTerrain t: TerrainType, withMeeple m: Meeple) {
-        terrain = t
+    init(withTerrains t: [String: TerrainType], withMeeple m: Meeple) {
+        terrains = t
         meeple = m
     }
     
@@ -48,12 +61,18 @@ class Tile: Prototype, CustomStringConvertible {
     
     
     //Prototype Methods
-    
     func clone() -> Prototype {
         
         //In case Tile ever adopts a superclass GameObject
         //var tileClone = super.clone()
         
-        return Tile(withTerrain: self.terrain, withMeeple: self.meeple!)
+        return Tile(withTerrains: self.terrains, withMeeple: self.meeple!)
+    }
+    
+    // Equatable Methods
+    
+    static func ==(lhs: Tile, rhs: Tile) -> Bool {
+        return lhs.terrains == rhs.terrains &&
+            lhs.meeple == rhs.meeple
     }
 }

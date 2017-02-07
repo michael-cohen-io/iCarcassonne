@@ -9,8 +9,12 @@
 import Foundation
 
 
-class Meeple {
+class Meeple: Equatable {
  
     //let belongsTo: Player
     //let belongsToTeam: Team
+    
+    static func ==(lhs: Meeple, rhs: Meeple) -> Bool {
+        return true
+    }
 }

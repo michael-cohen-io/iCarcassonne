@@ -11,21 +11,20 @@ import Foundation
 
 class Board {
     
-    //TODO: Refactor into better data structure for grids
-    var tiles: Tile?
- 
+    
+    var grid: TileGrid?
     
     static let sharedInstance = Board()
     
     
     init() {
-        tiles = nil
+        grid = TileGrid()
     }
     
     
     func addTile(tile: Tile, x: Int, y: Int) throws {
-        if tile == nil {
-            throw BoardError.invalidTileLocation(givenX: x, givenY: y)
+        if grid == nil {
+            throw BoardError.invalidTileLocation(x_pos: x, y_pos: y)
         }
         
         
@@ -34,6 +33,6 @@ class Board {
 
 
 enum BoardError: Error {
-    case invalidTileLocation(givenX: Int, givenY: Int)
+    case invalidTileLocation(x_pos: Int, y_pos: Int)
     case singletonError
 }

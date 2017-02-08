@@ -9,11 +9,11 @@
 import Foundation
 
 
-enum TerrainType {
-    case Type1
-    case Type2
-    case Type3
-    case NullTerrain
+enum TerrainType: String {
+    case Type1 = "T1"
+    case Type2 = "T2"
+    case Type3 = "T3"
+    case NullTerrain = "N"
 }
 
 

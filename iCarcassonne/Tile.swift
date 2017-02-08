@@ -37,9 +37,9 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
     init() {
         terrains = [String: TerrainType]()
         terrains["UP"] = .NullTerrain
-        terrains["Down"] = .NullTerrain
-        terrains["Right"] = .NullTerrain
-        terrains["Left"] = .NullTerrain
+        terrains["DOWN"] = .NullTerrain
+        terrains["RIGHT"] = .NullTerrain
+        terrains["LEFT"] = .NullTerrain
     }
     
     init(withTerrains t: [String: TerrainType]) {

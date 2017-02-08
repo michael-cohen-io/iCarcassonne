@@ -14,7 +14,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let grid = TileGrid(width: 4, height: 6)
-        grid.printGrid()
+        //grid.printGrid()
+        
+        //test producing random tiles
+        for _ in 1...100 {
+            let tile = Deck.sharedInstance.makeRandomTile()
+            print(tile)
+        }
     }
 
     override func didReceiveMemoryWarning() {

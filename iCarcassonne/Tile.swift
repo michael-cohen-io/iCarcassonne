@@ -23,9 +23,11 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
         }
         
         desc += "Terrains: ["
-        for (side, type) in terrains {
-            desc += " \(side): \(type),"
-        }
+        desc += "LEFT: \(terrains["LEFT"]!), "
+        desc += "UP: \(terrains["UP"]!), "
+        desc += "DOWN: \(terrains["DOWN"]!), "
+        desc += "RIGHT: \(terrains["RIGHT"]!)]"
+        
         desc.remove(at: desc.index(before: desc.endIndex))
         desc += "]"
         
@@ -58,7 +60,7 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
         return meeple != nil
     }
     
-    
+ 
     
     //Prototype Methods
     func clone() -> Prototype {

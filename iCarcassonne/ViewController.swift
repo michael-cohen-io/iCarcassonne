@@ -7,20 +7,28 @@
 //
 
 import UIKit
+import SpriteKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let grid = TileGrid(width: 4, height: 6)
-        //grid.printGrid()
+        let skView: SKView = self.view as! SKView
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.showsDrawCount = true
         
-        //test producing random tiles
-        for _ in 1...100 {
-            let tile = Deck.sharedInstance.makeRandomTile()
-            print(tile)
-        }
+        
+        let builder = TileBuilder(plist: "Tile_Try1")
+        builder.loadTileFromCurrentRoot()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let mainScene = GameplayScene(size: CGSize(width: 768, height: 1024))
+        let skView = self.view as! SKView
+        
+        skView.presentScene(mainScene)
     }
 
     override func didReceiveMemoryWarning() {

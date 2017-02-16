@@ -20,7 +20,7 @@ class Deck {
         return Tile()
     }
     
-    func makeRandomTile() -> Tile {
+    func makeRandomTile() {
         //Load random terrains
         var terrainDictionary = ["UP": TerrainType.randomTerrain(), "DOWN": TerrainType.randomTerrain(), "RIGHT": TerrainType.randomTerrain(), "LEFT": TerrainType.randomTerrain()]
         
@@ -31,7 +31,7 @@ class Deck {
         }
         
         //return tile
-        return Tile(withTerrains: terrainDictionary)
+        //return Tile(withTerrains: terrainDictionary)
     }
     
     private func verifyTerrains(terrains t: [String: TerrainType]) -> Bool {

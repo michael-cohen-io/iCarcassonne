@@ -12,8 +12,10 @@ import Foundation
 class Tile: Prototype, CustomStringConvertible, Equatable {
     
     //Tile attributes
-    var terrains: [String: TerrainType]
     var meeple: Meeple?
+    var nodes: [TerrainNode]?
+    var coordinates = [Direction8 : TileCoordinate]()
+    
     
     //Printable attributes
     var description: String {
@@ -22,34 +24,27 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
             desc += "Meeple = \(meep)"
         }
         
-        desc += "Terrains: ["
-        desc += "LEFT: \(terrains["LEFT"]!), "
-        desc += "UP: \(terrains["UP"]!), "
-        desc += "DOWN: \(terrains["DOWN"]!), "
-        desc += "RIGHT: \(terrains["RIGHT"]!)]"
-        
-        desc.remove(at: desc.index(before: desc.endIndex))
-        desc += "]"
-        
-        
         return desc
     }
     
     // NULL init
     init() {
-        terrains = [String: TerrainType]()
-        terrains["UP"] = .NullTerrain
-        terrains["DOWN"] = .NullTerrain
-        terrains["RIGHT"] = .NullTerrain
-        terrains["LEFT"] = .NullTerrain
+        
+        coordinates[.NORTHWEST] = TileCoordinate(withCorner: .NORTHWEST, firstTerrain: .NullTerrain, secondTerrain: .NullTerrain)
+        coordinates[.NORTH] = TileCoordinate(withEdge: .NORTH, terrain: .NullTerrain)
+        coordinates[.NORTHEAST] = TileCoordinate(withCorner: .NORTHEAST, firstTerrain: .NullTerrain, secondTerrain: .NullTerrain)
+        coordinates[.WEST] = TileCoordinate(withEdge: .WEST, terrain: .NullTerrain)
+        coordinates[.SOUTHWEST] = TileCoordinate(withCorner: .SOUTHWEST, firstTerrain: .NullTerrain, secondTerrain: .NullTerrain)
+        coordinates[.SOUTH] = TileCoordinate(withEdge: .SOUTH, terrain: .NullTerrain)
+        coordinates[.SOUTHEAST] = TileCoordinate(withCorner: .SOUTHEAST, firstTerrain: .NullTerrain, secondTerrain: .NullTerrain)
+        coordinates[.EAST] = TileCoordinate(withEdge: .EAST, terrain: .NullTerrain)
+        
+        
+        
     }
     
-    init(withTerrains t: [String: TerrainType]) {
-        terrains = t
-    }
     
     init(withTerrains t: [String: TerrainType], withMeeple m: Meeple) {
-        terrains = t
         meeple = m
     }
     
@@ -68,13 +63,12 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
         //In case Tile ever adopts a superclass GameObject
         //var tileClone = super.clone()
         
-        return Tile(withTerrains: self.terrains, withMeeple: self.meeple!)
+        return Tile()
     }
     
     // Equatable Methods
     
     static func ==(lhs: Tile, rhs: Tile) -> Bool {
-        return lhs.terrains == rhs.terrains &&
-            lhs.meeple == rhs.meeple
+        return lhs.meeple == rhs.meeple
     }
 }

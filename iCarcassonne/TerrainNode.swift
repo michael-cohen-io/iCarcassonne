@@ -21,8 +21,8 @@ class TerrainNode: CustomStringConvertible, Equatable {
     
     
     //NOTE: Not my favorite approach for identifying nodes. Might revisit later
-    let id: Int
-    static var currentID = 0
+    //UPDATE: Changed from self-increasing Int to more identifying String
+    let id: String
     
     //Printable attributes
     var description: String {
@@ -30,12 +30,20 @@ class TerrainNode: CustomStringConvertible, Equatable {
         return desc
     }
     
-    init(withType t: TerrainType) {
+    init(withID aID: String, withType t: TerrainType) {
         type = t
-        id = TerrainNode.currentID
+        id = aID
         
-        TerrainNode.currentID += 1
     }
+    
+    convenience init(withType t: TerrainType) {
+        self.init(withID: "-1", withType: t)
+    }
+    
+    convenience init() {
+        self.init(withID: "-1", withType: TerrainType.NullTerrain)
+    }
+    
     
     // Adding a neighbord node is not guarenteed to work
     func addNeighbor(node n: TerrainNode, direction d: Direction4) -> Bool {
@@ -84,9 +92,9 @@ class TerrainNode: CustomStringConvertible, Equatable {
     }
 }
 
-enum Direction4 {
-    case NORTH
-    case EAST
-    case SOUTH
-    case WEST
+enum Direction4: String {
+    case NORTH = "UP"
+    case EAST = "RIGHT"
+    case SOUTH = "DOWN"
+    case WEST = "LEFT"
 }

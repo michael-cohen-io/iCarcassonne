@@ -12,8 +12,13 @@ import Foundation
 class Tile: Prototype, CustomStringConvertible, Equatable {
     
     //Tile attributes
+    let id: Int
     var meeple: Meeple?
-    var nodes: [TerrainNode]?
+    
+    //         [ID: Node]
+    var nodes: [String: TerrainNode]?
+    
+    //                [Edge: Coordinate]
     var coordinates = [Direction8 : TileCoordinate]()
     
     
@@ -28,7 +33,12 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
     }
     
     // NULL init
-    init() {
+    convenience init() {
+        self.init(withID: -1)
+    }
+    
+    init(withID i: Int) {
+        id = i
         
         coordinates[.NORTHWEST] = TileCoordinate(withCorner: .NORTHWEST, firstTerrain: .NullTerrain, secondTerrain: .NullTerrain)
         coordinates[.NORTH] = TileCoordinate(withEdge: .NORTH, terrain: .NullTerrain)
@@ -38,16 +48,7 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
         coordinates[.SOUTH] = TileCoordinate(withEdge: .SOUTH, terrain: .NullTerrain)
         coordinates[.SOUTHEAST] = TileCoordinate(withCorner: .SOUTHEAST, firstTerrain: .NullTerrain, secondTerrain: .NullTerrain)
         coordinates[.EAST] = TileCoordinate(withEdge: .EAST, terrain: .NullTerrain)
-        
-        
-        
     }
-    
-    
-    init(withTerrains t: [String: TerrainType], withMeeple m: Meeple) {
-        meeple = m
-    }
-    
     
     //Tile Methods
     
@@ -55,6 +56,63 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
         return meeple != nil
     }
     
+    func setCoordinateTerrains(toTerrainTypes t: [Direction8: TileCoordinate]) -> Bool {
+        if !correctCoordinatesExist(terrainTypes: t) {
+            return false
+        }
+        
+        self.coordinates = t
+        return true
+    }
+    
+    private func correctCoordinatesExist(terrainTypes t: [Direction8: TileCoordinate]) -> Bool {
+        
+        if t[.NORTHWEST] == nil {
+            print("TileError: setCoordinateTerrains(): .NORTHWEST coordinate not set")
+            return false
+        }
+        
+        if t[.NORTHWEST] == nil {
+            print("TileError: setCoordinateTerrains(): .NORTHWEST coordinate not set")
+            return false
+        }
+        if t[.NORTHWEST] == nil {
+            print("TileError: setCoordinateTerrains(): .NORTHWEST coordinate not set")
+            return false
+        }
+        if t[.NORTHWEST] == nil {
+            print("TileError: setCoordinateTerrains(): .NORTHWEST coordinate not set")
+            return false
+        }
+        if t[.NORTHWEST] == nil {
+            print("TileError: setCoordinateTerrains(): .NORTHWEST coordinate not set")
+            return false
+        }
+        if t[.NORTHWEST] == nil {
+            print("TileError: setCoordinateTerrains(): .NORTHWEST coordinate not set")
+            return false
+        }
+        if t[.NORTHWEST] == nil {
+            print("TileError: setCoordinateTerrains(): .NORTHWEST coordinate not set")
+            return false
+        }
+        if t[.NORTHWEST] == nil {
+            print("TileError: setCoordinateTerrains(): .NORTHWEST coordinate not set")
+            return false
+        }
+        
+        return true
+    }
+    
+    func printNodes() {
+        for (id, node) in self.nodes! {
+            var str = id + ": "
+            for (dir, neighbor) in node.neighbors {
+                str += "\(dir)=\(neighbor.id), "
+            }
+            print(str)
+        }
+    }
  
     
     //Prototype Methods
@@ -69,6 +127,6 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
     // Equatable Methods
     
     static func ==(lhs: Tile, rhs: Tile) -> Bool {
-        return lhs.meeple == rhs.meeple
+        return lhs.id == rhs.id
     }
 }

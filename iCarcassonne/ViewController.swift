@@ -21,7 +21,10 @@ class ViewController: UIViewController {
         
         
         let builder = TileBuilder(plist: "Tile_Try1")
-        builder.loadTileFromCurrentRoot()
+        let aTile = builder.loadFromPlist(TileWithId: 1)
+        
+        aTile?.printNodes() 
+        print(aTile)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -11,10 +11,18 @@ import Foundation
 
 // This class represents 1 of the 9 coordinates within a Tile. These coordinates are NW, N, NE, E, SE, S, SW, W.
 // Each corner coordinate contains 2 terrains, each edge coordinate contains 1 terrain
-class TileCoordinate {
+class TileCoordinate: CustomStringConvertible {
     let direction: Direction8
     var terrains = [Direction4: TerrainType]()
     
+    var description: String {
+        var des = "TileCoordinate: Direction=\(direction), Terrains= {"
+        for t in terrains {
+            des += " \(t)"
+        }
+        des += " }"
+        return des
+    }
     
     init(withEdge d: Direction8, terrain t1: TerrainType) {
         direction = d

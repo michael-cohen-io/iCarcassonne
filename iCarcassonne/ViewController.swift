@@ -21,10 +21,11 @@ class ViewController: UIViewController {
         
         
         let builder = TileBuilder(plist: "Tile_Try1")
-        let aTile = builder.loadFromPlist(TileWithId: 1)
+        let aTile = builder.loadFromPlist(TileWithId: 3)
         
-        aTile?.printNodes() 
-        print(aTile)
+        aTile?.printEdges()
+        print("\n\n")
+        aTile?.printNodes()
     }
     
     override func viewWillAppear(_ animated: Bool) {

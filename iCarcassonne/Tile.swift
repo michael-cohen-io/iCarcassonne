@@ -104,6 +104,8 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
         return true
     }
     
+    
+    //Helper methods
     func printNodes() {
         for (id, node) in self.nodes! {
             var str = id + ": "
@@ -113,6 +115,15 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
             print(str)
         }
     }
+    
+    func printEdges() {
+        var str = "Coords: "
+        for (_, coord) in self.coordinates {
+            str += "Edge: \(coord) \n"
+        }
+        print(str)
+    }
+    
  
     
     //Prototype Methods

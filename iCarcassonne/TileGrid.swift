@@ -11,11 +11,13 @@ import Foundation
 
 class TileGrid {
     
-    var tiles: [[Tile]]
-    let nullTile = Tile()
+    private var tiles: [[Tile]]
+    private let nullTile = Tile()
     
     let gridHeight: Int
     let gridWidth: Int
+    
+    private var isGridEmpty = true
     
     init(width: Int, height: Int) {
         
@@ -33,7 +35,7 @@ class TileGrid {
     }
     
     // check if tile is valid, and if tile placement is valid before committing
-    func addTile(toTile t: Tile, x_pos x: Int, y_pos y: Int) -> Bool {
+    func addTile(aTile t: Tile, x_pos x: Int, y_pos y: Int) -> Bool {
         
         //tile's terrains must match its neighbors' terrains
         if !isTileValidHere(tile: t, x_pos: x, y_pos: y) {
@@ -42,7 +44,8 @@ class TileGrid {
         }
         
         //one of the tile's potential neighbors must have a non-null tile
-        if !locationIsNextToTile(x_pos: x, y_pos: y) {
+        // exception: if the tile about to be laid is the first tile
+        if !locationIsNextToTile(x_pos: x, y_pos: y) && !isGridEmpty {
             print("TileGrid: none of the tile's potential neighbors are occupied tiles")
             return false
         }
@@ -51,6 +54,10 @@ class TileGrid {
         if tiles[x][y] != nullTile {
             print("TileGrid: selected tile location is already occupied")
             return false
+        }
+        
+        if isGridEmpty {
+            isGridEmpty = false
         }
         
         tiles[x][y] = t
@@ -80,32 +87,41 @@ class TileGrid {
     }
     
     //checks that the provided tile matches the terrains that neighbor it
+    //assumption: for all edges, the value of middle coordinate matches value of corners
     private func isTileValidHere(tile t: Tile, x_pos x: Int, y_pos y: Int) -> Bool {
         
-//        //Compare type with above
-//        if (y-1 >= 0) {
-//            if !terrainTypesValid(Terrain1: t.terrains["UP"]!, Terrain2: tiles[x][y-1].terrains["DOWN"]!) { return false }
-//        }
-//        
-//        //Compare type with below
-//        if (y+1 <= gridHeight) {
-//            if !terrainTypesValid(Terrain1: t.terrains["DOWN"]!, Terrain2: tiles[x][y+1].terrains["UP"]!) { return false }
-//        }
-//        
-//        //Compare type with right
-//        if (x+1 <= gridWidth) {
-//            if !terrainTypesValid(Terrain1: t.terrains["RIGHT"]!, Terrain2: tiles[x][y-1].terrains["LEFT"]!) { return false }
-//        }
-//        
-//        //Compare type with left
-//        if (x-1 >= 0) {
-//            if !terrainTypesValid(Terrain1: t.terrains["LEFT"]!, Terrain2: tiles[x][y-1].terrains["RIGHT"]!) { return false }
-//        }
+        //Compare with above
+        if (y-1 >= 0) {
+            let t1 = t.coordinates[Direction8.NORTH]?.terrains[Direction4.NORTH]
+            let t2 = tiles[x][y-1].coordinates[Direction8.SOUTH]?.terrains[Direction4.SOUTH]
+            if !terrainTypesMatch(Terrain1: t1!, Terrain2: t2!) { return false }
+        }
+        
+        //Compare with below
+        if (y+1 <= gridHeight) {
+            let t1 = t.coordinates[Direction8.SOUTH]?.terrains[Direction4.SOUTH]
+            let t2 = tiles[x][y+1].coordinates[Direction8.NORTH]?.terrains[Direction4.NORTH]
+            if !terrainTypesMatch(Terrain1: t1!, Terrain2: t2!) { return false }
+        }
+        
+        //Compare with right
+        if (x+1 <= gridWidth) {
+            let t1 = t.coordinates[Direction8.EAST]?.terrains[Direction4.EAST]
+            let t2 = tiles[x+1][y].coordinates[Direction8.WEST]?.terrains[Direction4.WEST]
+            if !terrainTypesMatch(Terrain1: t1!, Terrain2: t2!) { return false }
+        }
+        
+        //Compare with left
+        if (x-1 >= 0) {
+            let t1 = t.coordinates[Direction8.WEST]?.terrains[Direction4.WEST]
+            let t2 = tiles[x-1][y].coordinates[Direction8.EAST]?.terrains[Direction4.EAST]
+            if !terrainTypesMatch(Terrain1: t1!, Terrain2: t2!) { return false }
+        }
         
         return true
     }
     
-    private func terrainTypesValid(Terrain1 t1: TerrainType, Terrain2 t2: TerrainType) -> Bool {
+    private func terrainTypesMatch(Terrain1 t1: TerrainType, Terrain2 t2: TerrainType) -> Bool {
         return t1 == t2 || t2 == .NullTerrain
     }
 }

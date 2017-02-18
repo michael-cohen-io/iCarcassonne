@@ -21,11 +21,16 @@ class ViewController: UIViewController {
         
         
         let builder = TileBuilder(plist: "Tile_Try1")
-        let aTile = builder.loadFromPlist(TileWithId: 3)
+        let tile0 = builder.loadFromPlist(TileWithId: 0)
+        let tile3 = builder.loadFromPlist(TileWithId: 3)
         
-        aTile?.printEdges()
-        print("\n\n")
-        aTile?.printNodes()
+        let grid = TileGrid(width: 10, height: 10)
+        if !grid.addTile(aTile: tile0!, x_pos: 0, y_pos: 0) {
+            print("Tile0 not added")
+        }
+        if !grid.addTile(aTile: tile3!, x_pos: 1, y_pos: 0) {
+            print("Tile3 not added")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -81,45 +81,6 @@
 				<key>LEFT</key>
 				<string>G2</string>
 			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>GS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>G3</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G2</string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>GS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>G3</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G2</string>
-			</dict>
-			<key>LEFT</key>
-			<dict>
-				<key>id</key>
-				<string>GS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>G3</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G2</string>
-			</dict>
 		</dict>
 		<key>NE</key>
 		<dict>
@@ -184,46 +145,7 @@
 		<dict>
 			<key>EAST</key>
 			<string>1</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>CS3</string>
-				<key>UP</key>
-				<string>C5</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>C7</string>
-				<key>LEFT</key>
-				<string>CS2</string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>CS3</string>
-				<key>UP</key>
-				<string>C5</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>C7</string>
-				<key>LEFT</key>
-				<string>CS2</string>
-			</dict>
 			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS3</string>
-				<key>UP</key>
-				<string>C5</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>C7</string>
-				<key>LEFT</key>
-				<string>CS2</string>
-			</dict>
-			<key>LEFT</key>
 			<dict>
 				<key>id</key>
 				<string>CS3</string>
@@ -300,46 +222,7 @@
 		<dict>
 			<key>SOUTH</key>
 			<string>2</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>GS2</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>G7</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G6</string>
-			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>GS2</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>G7</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G6</string>
-			</dict>
 			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>GS2</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>G7</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G6</string>
-			</dict>
-			<key>LEFT</key>
 			<dict>
 				<key>id</key>
 				<string>GS2</string>
@@ -416,45 +299,6 @@
 		<dict>
 			<key>WEST</key>
 			<string>1</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string>C2</string>
-				<key>RIGHT</key>
-				<string>CS2</string>
-				<key>DOWN</key>
-				<string>C3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string>C2</string>
-				<key>RIGHT</key>
-				<string>CS2</string>
-				<key>DOWN</key>
-				<string>C3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string>C2</string>
-				<key>RIGHT</key>
-				<string>CS2</string>
-				<key>DOWN</key>
-				<string>C3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
 			<key>LEFT</key>
 			<dict>
 				<key>id</key>
@@ -484,45 +328,6 @@
 				<key>LEFT</key>
 				<string>CS1</string>
 			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS2</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>CS3</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>CS1</string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>CS2</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>CS3</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>CS1</string>
-			</dict>
-			<key>LEFT</key>
-			<dict>
-				<key>id</key>
-				<string>CS2</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>CS3</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>CS1</string>
-			</dict>
 		</dict>
 	</dict>
 	<dict>
@@ -535,32 +340,6 @@
 			<key>WEST</key>
 			<string>1</string>
 			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>CS2</string>
-				<key>DOWN</key>
-				<string>CS3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>CS2</string>
-				<key>DOWN</key>
-				<string>CS3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>DOWN</key>
 			<dict>
 				<key>id</key>
 				<string>CS1</string>
@@ -604,45 +383,6 @@
 				<key>LEFT</key>
 				<string>CS1</string>
 			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS2</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>C1</string>
-				<key>DOWN</key>
-				<string>CS4</string>
-				<key>LEFT</key>
-				<string>CS1</string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>CS2</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>C1</string>
-				<key>DOWN</key>
-				<string>CS4</string>
-				<key>LEFT</key>
-				<string>CS1</string>
-			</dict>
-			<key>LEFT</key>
-			<dict>
-				<key>id</key>
-				<string>CS2</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>C1</string>
-				<key>DOWN</key>
-				<string>CS4</string>
-				<key>LEFT</key>
-				<string>CS1</string>
-			</dict>
 		</dict>
 		<key>NE</key>
 		<dict>
@@ -939,45 +679,6 @@
 		<dict>
 			<key>WEST</key>
 			<string>1</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>CS3</string>
-				<key>UP</key>
-				<string>CS1</string>
-				<key>RIGHT</key>
-				<string>CS4</string>
-				<key>DOWN</key>
-				<string>C3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS3</string>
-				<key>UP</key>
-				<string>CS1</string>
-				<key>RIGHT</key>
-				<string>CS4</string>
-				<key>DOWN</key>
-				<string>C3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>CS3</string>
-				<key>UP</key>
-				<string>CS1</string>
-				<key>RIGHT</key>
-				<string>CS4</string>
-				<key>DOWN</key>
-				<string>C3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
 			<key>LEFT</key>
 			<dict>
 				<key>id</key>
@@ -995,45 +696,6 @@
 		<key>M</key>
 		<dict>
 			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>CS4</string>
-				<key>UP</key>
-				<string>CS2</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>CS3</string>
-			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS4</string>
-				<key>UP</key>
-				<string>CS2</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>CS3</string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>CS4</string>
-				<key>UP</key>
-				<string>CS2</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>CS3</string>
-			</dict>
-			<key>LEFT</key>
 			<dict>
 				<key>id</key>
 				<string>CS4</string>
@@ -1127,45 +789,6 @@
 				<key>LEFT</key>
 				<string>C2</string>
 			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>C3</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>C2</string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>C3</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>C2</string>
-			</dict>
-			<key>LEFT</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>C3</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>C2</string>
-			</dict>
 		</dict>
 		<key>NE</key>
 		<dict>
@@ -1230,46 +853,7 @@
 		<dict>
 			<key>EAST</key>
 			<string>2</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>GS2</string>
-				<key>UP</key>
-				<string>G8</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>GS3</string>
-				<key>LEFT</key>
-				<string>G7</string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>GS2</string>
-				<key>UP</key>
-				<string>G8</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>GS3</string>
-				<key>LEFT</key>
-				<string>G7</string>
-			</dict>
 			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>GS2</string>
-				<key>UP</key>
-				<string>G8</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>GS3</string>
-				<key>LEFT</key>
-				<string>G7</string>
-			</dict>
-			<key>LEFT</key>
 			<dict>
 				<key>id</key>
 				<string>GS2</string>
@@ -1289,19 +873,6 @@
 			<string>2</string>
 			<key>EAST</key>
 			<string>2</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>GS3</string>
-				<key>UP</key>
-				<string>GS2</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G10</string>
-			</dict>
 			<key>RIGHT</key>
 			<dict>
 				<key>id</key>
@@ -1316,19 +887,6 @@
 				<string>G10</string>
 			</dict>
 			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>GS3</string>
-				<key>UP</key>
-				<string>GS2</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G10</string>
-			</dict>
-			<key>LEFT</key>
 			<dict>
 				<key>id</key>
 				<string>GS3</string>
@@ -1405,32 +963,6 @@
 			<string>2</string>
 			<key>WEST</key>
 			<string>2</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>GS1</string>
-				<key>UP</key>
-				<string>G5</string>
-				<key>RIGHT</key>
-				<string>G6</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>GS1</string>
-				<key>UP</key>
-				<string>G5</string>
-				<key>RIGHT</key>
-				<string>G6</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
 			<key>DOWN</key>
 			<dict>
 				<key>id</key>
@@ -1650,45 +1182,6 @@
 				<key>LEFT</key>
 				<string>G2</string>
 			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>GS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>G3</string>
-				<key>DOWN</key>
-				<string>GS2</string>
-				<key>LEFT</key>
-				<string>G2</string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>GS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>G3</string>
-				<key>DOWN</key>
-				<string>GS2</string>
-				<key>LEFT</key>
-				<string>G2</string>
-			</dict>
-			<key>LEFT</key>
-			<dict>
-				<key>id</key>
-				<string>GS1</string>
-				<key>UP</key>
-				<string></string>
-				<key>RIGHT</key>
-				<string>G3</string>
-				<key>DOWN</key>
-				<string>GS2</string>
-				<key>LEFT</key>
-				<string>G2</string>
-			</dict>
 		</dict>
 		<key>NE</key>
 		<dict>
@@ -1753,46 +1246,7 @@
 		<dict>
 			<key>EAST</key>
 			<string>1</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>CS2</string>
-				<key>UP</key>
-				<string>C5</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>C7</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>CS2</string>
-				<key>UP</key>
-				<string>C5</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>C7</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
 			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS2</string>
-				<key>UP</key>
-				<string>C5</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>C7</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>LEFT</key>
 			<dict>
 				<key>id</key>
 				<string>CS2</string>
@@ -1869,46 +1323,7 @@
 		<dict>
 			<key>SOUTH</key>
 			<string>2</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>GS3</string>
-				<key>UP</key>
-				<string>GS2</string>
-				<key>RIGHT</key>
-				<string>G7</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G5</string>
-			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>GS3</string>
-				<key>UP</key>
-				<string>GS2</string>
-				<key>RIGHT</key>
-				<string>G7</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G5</string>
-			</dict>
 			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>GS3</string>
-				<key>UP</key>
-				<string>GS2</string>
-				<key>RIGHT</key>
-				<string>G7</string>
-				<key>DOWN</key>
-				<string></string>
-				<key>LEFT</key>
-				<string>G5</string>
-			</dict>
-			<key>LEFT</key>
 			<dict>
 				<key>id</key>
 				<string>GS3</string>
@@ -1985,45 +1400,6 @@
 		<dict>
 			<key>WEST</key>
 			<string>1</string>
-			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string>C2</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>C3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string>C2</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>C3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>CS1</string>
-				<key>UP</key>
-				<string>C2</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>C3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
 			<key>LEFT</key>
 			<dict>
 				<key>id</key>
@@ -2041,45 +1417,6 @@
 		<key>M</key>
 		<dict>
 			<key>UP</key>
-			<dict>
-				<key>id</key>
-				<string>GS2</string>
-				<key>UP</key>
-				<string>GS1</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>GS3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>RIGHT</key>
-			<dict>
-				<key>id</key>
-				<string>GS2</string>
-				<key>UP</key>
-				<string>GS1</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>GS3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>DOWN</key>
-			<dict>
-				<key>id</key>
-				<string>GS2</string>
-				<key>UP</key>
-				<string>GS1</string>
-				<key>RIGHT</key>
-				<string></string>
-				<key>DOWN</key>
-				<string>GS3</string>
-				<key>LEFT</key>
-				<string></string>
-			</dict>
-			<key>LEFT</key>
 			<dict>
 				<key>id</key>
 				<string>GS2</string>

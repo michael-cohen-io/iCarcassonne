@@ -22,6 +22,9 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
     var coordinates = [Direction8 : TileCoordinate]()
     
     
+    //              [Edge: [N1: Node, N2: Node, N3: Node] ]
+    var edgeNodes = [Direction4: [String: TerrainNode]]()
+    
     //Printable attributes
     var description: String {
         var desc = "Tile: "

@@ -84,6 +84,9 @@ class TerrainNode: CustomStringConvertible, Equatable {
         return false
     }
     
+    func isNullNode() -> Bool {
+        return self.id == "-1"
+    }
     
     // Equatable Methods
     

@@ -16,8 +16,18 @@ class TerrainNodeBuilder {
     //                   [ID: Node]
     var nodeDictionary = [String: TerrainNode]()
     
+    var edgeNodeDictionary = [Direction4: [String: TerrainNode]]()
+    
     init() {
     
+        //set up structure for edgeNodeDictionary
+        let nullNode = TerrainNode()
+        let nullEdgeDict = ["N1": nullNode, "N2": nullNode, "N3": nullNode]
+        
+        edgeNodeDictionary[.NORTH] = nullEdgeDict
+        edgeNodeDictionary[.EAST] = nullEdgeDict
+        edgeNodeDictionary[.SOUTH] = nullEdgeDict
+        edgeNodeDictionary[.WEST] = nullEdgeDict
     }
     
     func getNodes() -> [String: TerrainNode] {
@@ -43,6 +53,8 @@ class TerrainNodeBuilder {
             
             //directionDict = {NORTH: String, WEST: String, UP: {}, RIGHT: {},...
             for (directionKey, nodeData) in directionDict {
+                
+                //Ignore the values which are used in coordinate-terrain definition
                 if directionKey == "NORTH" ||
                     directionKey == "WEST" ||
                     directionKey == "SOUTH" ||
@@ -54,14 +66,11 @@ class TerrainNodeBuilder {
                     continue
                 }
                 
-                //Skip cases in which the node already exists i.e. supernodes
-                if nodeDictionary[(nd["id"] as? String)!] != nil {
-                    continue
-                }
-                
                 let aNode = buildNode(nodeData: nd)
                 nodeDictionary[aNode.id] = aNode
                 nodeDataDictionary[aNode.id] = nd
+                
+                self.addToEdgeDictionary(toEdge: key, node: aNode, withDirection: getDirection(fromDirectionString: directionKey))
             }
         }
         
@@ -123,6 +132,70 @@ class TerrainNodeBuilder {
         }
     }
     
+    //Adds the provided node to its correct edge library contingent on the following cases:
+    //  Coord: NW, Direction: N || W
+    //  Coord: NE, Direction: N || E
+    //  Coord: SE, Direction: S || E
+    //  Coord: SW, Direction: S || W
+    //  Coord: N,E,S,W figure out later
+    private func addToEdgeDictionary(toEdge edgeStr: String, node n: TerrainNode, withDirection d: Direction4) {
+        print("Provided Edge: \(edgeStr) Provided Node: \(n) Provided Direction: \(d)")
+        
+        //completely ignore Middle coordinates to save time
+        if (edgeStr == "M") {
+            return
+        }
+        
+        if (edgeStr.contains("NW")) {
+            switch d {
+            case .NORTH:
+                    self.edgeNodeDictionary[.NORTH]?["N1"] = n
+                    return
+            case .WEST:
+                    self.edgeNodeDictionary[.WEST]?["N3"] = n
+                    return
+            default:
+                return
+            }
+        }
+        if (edgeStr.contains("NE")) {
+            switch d {
+            case .NORTH:
+                self.edgeNodeDictionary[.NORTH]?["N3"] = n
+                return
+            case .EAST:
+                self.edgeNodeDictionary[.EAST]?["N1"] = n
+                return
+            default:
+                return
+            }
+        }
+        if (edgeStr.contains("SE")) {
+            switch d {
+            case .SOUTH:
+                self.edgeNodeDictionary[.SOUTH]?["N1"] = n
+                return
+            case .EAST:
+                self.edgeNodeDictionary[.EAST]?["N3"] = n
+                return
+            default:
+                return
+            }
+        }
+        if (edgeStr.contains("SW")) {
+            switch d {
+            case .SOUTH:
+                self.edgeNodeDictionary[.SOUTH]?["N3"] = n
+                return
+            case .WEST:
+                self.edgeNodeDictionary[.WEST]?["N1"] = n
+                return
+            default:
+                return
+            }
+        }
+        
+    }
     
     private func getDirection(fromDirectionString dStr: String) -> Direction4 {
         return Direction4(rawValue: dStr)!

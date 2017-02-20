@@ -87,7 +87,7 @@ class TileBuilder {
         let nodeBuilder = TerrainNodeBuilder()
         nodeBuilder.buildNodes(withTileData: (root?[tileIndex])!)
         aTile.nodes = nodeBuilder.getNodes()
-        //aTile.edgeNodes = nodeBuilder.getEdgeNodes()
+        aTile.edgeNodes = nodeBuilder.getEdgeNodes()
         
         return aTile
     }

@@ -33,6 +33,14 @@ class TerrainNodeBuilder {
     func getNodes() -> [String: TerrainNode] {
         return nodeDictionary
     }
+    
+    func getEdgeNodes() -> [Direction4: [String: TerrainNode]] {
+        if edgeDictionaryDoesContainNullNodes() {
+            print("INTERNAL STRUCTURE ERROR: One of the edge nodes was not properly loaded into edge node dictionary")
+        }
+        
+        return edgeNodeDictionary
+    }
 
     func buildNodes(withTileData t: [String: Any]) {
         tileData = t
@@ -139,7 +147,6 @@ class TerrainNodeBuilder {
     //  Coord: SW, Direction: S || W
     //  Coord: N,E,S,W figure out later
     private func addToEdgeDictionary(toEdge edgeStr: String, node n: TerrainNode, withDirection d: Direction4) {
-        print("Provided Edge: \(edgeStr) Provided Node: \(n) Provided Direction: \(d)")
         
         //completely ignore Middle coordinates to save time
         if (edgeStr == "M") {
@@ -194,7 +201,23 @@ class TerrainNodeBuilder {
                 return
             }
         }
+        if (edgeStr == "N" && d == .NORTH) ||
+            (edgeStr == "E" && d == .EAST) ||
+            (edgeStr == "S" && d == .SOUTH) ||
+            (edgeStr == "W" && d == .WEST) {
+            self.edgeNodeDictionary[d]?["N2"] = n
+        }
         
+    }
+    
+    private func edgeDictionaryDoesContainNullNodes() -> Bool{
+        for (_, nodeDict) in self.edgeNodeDictionary {
+            for (_, aNode) in nodeDict {
+                if aNode.isNullNode() { return true }
+            }
+        }
+        
+        return false
     }
     
     private func getDirection(fromDirectionString dStr: String) -> Direction4 {

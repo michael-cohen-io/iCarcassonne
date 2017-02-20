@@ -21,8 +21,27 @@ class ViewController: UIViewController {
         
         
         let builder = TileBuilder(plist: "Tile_Try1")
-        print("TILE0\n")
-        let tile0 = builder.loadFromPlist(TileWithId: 0)
+        print("\nTILE1")
+        let tile1 = builder.loadFromPlist(TileWithId: 1)
+        
+        for (dir, nodeDict) in (tile1?.edgeNodes)! {
+            print("\(dir): N1=\(nodeDict["N1"]), N2=\(nodeDict["N2"]), N3=\(nodeDict["N3"])")
+        }
+        
+        print("\nTILE2")
+        let tile2 = builder.loadFromPlist(TileWithId: 2)
+        
+        for (dir, nodeDict) in (tile2?.edgeNodes)! {
+            print("\(dir): N1=\(nodeDict["N1"]), N2=\(nodeDict["N2"]), N3=\(nodeDict["N3"])")
+        }
+        
+        print("\nTILE3")
+        let tile3 = builder.loadFromPlist(TileWithId: 3)
+        
+        for (dir, nodeDict) in (tile3?.edgeNodes)! {
+            print("\(dir): N1=\(nodeDict["N1"]), N2=\(nodeDict["N2"]), N3=\(nodeDict["N3"])")
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

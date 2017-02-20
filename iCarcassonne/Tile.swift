@@ -108,6 +108,58 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
     }
     
     
+    //tile rotation is always 90 degrees clockwise:
+    //  North -> East
+    //  East -> South
+    //  South -> West
+    //  West -> North
+    func rotateTile() {
+        
+        //Rotation has 2 steps:
+        //  1. Rotate coordinate edge types
+        //  2. Rotate edge nodes
+        self.rotateCoordinateEdges()
+        self.rotateEdgeNodes()
+    }
+    
+    private func rotateCoordinateEdges() {
+   
+        // create deep copy of coordinates dictionary
+        var coordCopy = [Direction8: TileCoordinate]()
+        
+        for (direction, terrain) in self.coordinates {
+            coordCopy[direction] = terrain.copy() as! TileCoordinate
+        }
+        
+        
+        // West -> North
+        self.coordinates[.NORTHWEST]?.terrains[.NORTH] = coordCopy[.SOUTHWEST]?.terrains[.WEST]
+        self.coordinates[.NORTH]?.terrains[.NORTH] = coordCopy[.WEST]?.terrains[.WEST]
+        self.coordinates[.NORTHEAST]?.terrains[.NORTH] = coordCopy[.NORTHWEST]?.terrains[.WEST]
+
+        // South -> West
+        self.coordinates[.SOUTHWEST]?.terrains[.WEST] = coordCopy[.SOUTHEAST]?.terrains[.SOUTH]
+        self.coordinates[.WEST]?.terrains[.WEST] = coordCopy[.SOUTH]?.terrains[.SOUTH]
+        self.coordinates[.NORTHWEST]?.terrains[.WEST] = coordCopy[.SOUTHWEST]?.terrains[.SOUTH]
+        
+        // East -> South
+        self.coordinates[.SOUTHEAST]?.terrains[.SOUTH] = coordCopy[.NORTHEAST]?.terrains[.EAST]
+        self.coordinates[.SOUTH]?.terrains[.SOUTH] = coordCopy[.EAST]?.terrains[.EAST]
+        self.coordinates[.SOUTHWEST]?.terrains[.SOUTH] = coordCopy[.SOUTHEAST]?.terrains[.EAST]
+        
+        // North -> East
+        self.coordinates[.NORTHEAST]?.terrains[.EAST] = coordCopy[.NORTHWEST]?.terrains[.NORTH]
+        self.coordinates[.EAST]?.terrains[.EAST] = coordCopy[.NORTH]?.terrains[.NORTH]
+        self.coordinates[.SOUTHEAST]?.terrains[.EAST] = coordCopy[.NORTHEAST]?.terrains[.NORTH]
+//
+    }
+    
+    
+    private func rotateEdgeNodes() {
+        
+    }
+    
+    
     //Helper methods
     func printNodes() {
         for (id, node) in self.nodes! {
@@ -119,11 +171,17 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
         }
     }
     
-    func printEdges() {
-        var str = "Coords: "
-        for (_, coord) in self.coordinates {
-            str += "Edge: \(coord) \n"
-        }
+    func printCoordinateEdges() {
+        var str = "Coords:\n"
+        str += "\((self.coordinates[.NORTHWEST]?.terrains[.NORTH])!) | \((self.coordinates[.NORTH]?.terrains[.NORTH])!) | \((self.coordinates[.NORTHEAST]?.terrains[.NORTH])!)\n"
+        str += "\((self.coordinates[.NORTHWEST]?.terrains[.WEST])!) | \t\t\t| \((self.coordinates[.NORTHEAST]?.terrains[.EAST])!)\n"
+        str += "------------------------------\n"
+        str += "\((self.coordinates[.WEST]?.terrains[.WEST])!) | \t\t\t| \((self.coordinates[.EAST]?.terrains[.EAST])!)\n"
+        str += "------------------------------\n"
+        str += "\((self.coordinates[.SOUTHWEST]?.terrains[.WEST])!) | \t\t\t| \((self.coordinates[.SOUTHEAST]?.terrains[.EAST])!)\n"
+        str += "\((self.coordinates[.SOUTHWEST]?.terrains[.SOUTH])!) | \((self.coordinates[.SOUTH]?.terrains[.SOUTH])!) | \((self.coordinates[.SOUTHEAST]?.terrains[.SOUTH])!)\n"
+        
+        
         print(str)
     }
     

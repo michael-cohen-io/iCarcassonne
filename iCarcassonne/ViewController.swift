@@ -23,24 +23,27 @@ class ViewController: UIViewController {
         let builder = TileBuilder(plist: "Tile_Try1")
         print("\nTILE1")
         let tile1 = builder.loadFromPlist(TileWithId: 1)
+        tile1?.printCoordinateEdges()
         
-        for (dir, nodeDict) in (tile1?.edgeNodes)! {
-            print("\(dir): N1=\(nodeDict["N1"]), N2=\(nodeDict["N2"]), N3=\(nodeDict["N3"])")
-        }
+        tile1?.rotateTile()
+        
+        tile1?.printCoordinateEdges()
         
         print("\nTILE2")
         let tile2 = builder.loadFromPlist(TileWithId: 2)
+        tile2?.printCoordinateEdges()
         
-        for (dir, nodeDict) in (tile2?.edgeNodes)! {
-            print("\(dir): N1=\(nodeDict["N1"]), N2=\(nodeDict["N2"]), N3=\(nodeDict["N3"])")
-        }
+        tile2?.rotateTile()
+        tile2?.printCoordinateEdges()
         
         print("\nTILE3")
         let tile3 = builder.loadFromPlist(TileWithId: 3)
+        tile3?.printCoordinateEdges()
         
-        for (dir, nodeDict) in (tile3?.edgeNodes)! {
-            print("\(dir): N1=\(nodeDict["N1"]), N2=\(nodeDict["N2"]), N3=\(nodeDict["N3"])")
-        }
+        tile3?.rotateTile()
+        
+        tile3?.printCoordinateEdges()
+//
         
     }
     

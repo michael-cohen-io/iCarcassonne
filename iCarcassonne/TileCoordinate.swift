@@ -11,7 +11,7 @@ import Foundation
 
 // This class represents 1 of the 9 coordinates within a Tile. These coordinates are NW, N, NE, E, SE, S, SW, W.
 // Each corner coordinate contains 2 terrains, each edge coordinate contains 1 terrain
-class TileCoordinate: CustomStringConvertible {
+class TileCoordinate: CustomStringConvertible, NSCopying {
     let direction: Direction8
     var terrains = [Direction4: TerrainType]()
     
@@ -65,6 +65,28 @@ class TileCoordinate: CustomStringConvertible {
         default:
             print("ERROR: Incorrect initializer used")
         }
+    }
+    
+    init(withDirection d: Direction8, terrains t: [Direction4: TerrainType]) {
+        direction = d
+        
+        if direction == .NORTH || direction == .NORTHWEST || direction == .NORTHEAST {
+            terrains[.NORTH] = t[.NORTH]
+        }
+        if direction == .EAST || direction == .NORTHEAST || direction == .SOUTHEAST {
+            terrains[.EAST] = t[.EAST]
+        }
+        if direction == .SOUTH || direction == .SOUTHWEST || direction == .SOUTHEAST {
+            terrains[.SOUTH] = t[.SOUTH]
+        }
+        if direction == .WEST || direction == .NORTHWEST || direction == .SOUTHWEST {
+            terrains[.WEST] = t[.WEST]
+        }
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = TileCoordinate(withDirection: self.direction, terrains: self.terrains)
+        return copy
     }
 }
 

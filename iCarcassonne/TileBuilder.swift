@@ -120,6 +120,7 @@ class TileBuilder {
     //Get terrain for each direction,
     // build into TileCoordinate object
     // & collect into dictionary
+    // TODO: Could potentially refactor this method to make use of more concise TileCoordinate initializer
     private func getTileCoordinateTerrains(forTileData tileData: [String: Any]?) -> [Direction8: TileCoordinate]? {
         
         var coordinates = [Direction8: TileCoordinate]()

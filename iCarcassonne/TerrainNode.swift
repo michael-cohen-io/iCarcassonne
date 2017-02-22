@@ -57,19 +57,22 @@ class TerrainNode: CustomStringConvertible, Equatable {
             return false
         }
         
+        if self.type != n.type {
+            print("\(self) has type \(self.type) while \(n) has type \(n.type)")
+            return false
+        }
+        
         neighbors[d] = n
         return true
     }
     
     // Preferred way to remove a node. Returns true if successful
-    func removeNeighbor(direction d: Direction4) -> Bool {
-        if neighbors[d] == nil {
-            print("\(self) does not have a neighbor to remove at \(d)")
-            return false
+    func removeNeighbor(direction d: Direction4) -> TerrainNode? {
+        if let nNode = neighbors[d] {
+            neighbors[d] = nil
+            return nNode
         }
-        
-        neighbors[d] = nil
-        return true
+        return nil
     }
     
     // ancillary removal method. Takes longer
@@ -82,6 +85,29 @@ class TerrainNode: CustomStringConvertible, Equatable {
         }
         
         return false
+    }
+    
+    func rotateNeighbors() -> Bool {
+        
+        let nNorth = self.removeNeighbor(direction: .NORTH)
+        let nEast = self.removeNeighbor(direction: .EAST)
+        let nSouth = self.removeNeighbor(direction: .SOUTH)
+        let nWest = self.removeNeighbor(direction: .WEST)
+        
+        if nNorth != nil {
+            if !self.addNeighbor(node: nNorth!, direction: .EAST) { return false }
+        }
+        if nEast != nil {
+            if !self.addNeighbor(node: nEast!, direction: .SOUTH) { return false }
+        }
+        if nSouth != nil {
+            if !self.addNeighbor(node: nSouth!, direction: .WEST) { return false }
+        }
+        if nWest != nil {
+            if !self.addNeighbor(node: nWest!, direction: .NORTH) { return false }
+        }
+        
+        return true
     }
     
     func isNullNode() -> Bool {

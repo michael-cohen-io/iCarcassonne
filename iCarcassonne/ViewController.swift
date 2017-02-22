@@ -21,30 +21,14 @@ class ViewController: UIViewController {
         
         
         let builder = TileBuilder(plist: "Tile_Try1")
-        print("\nTILE1")
-        let tile1 = builder.loadFromPlist(TileWithId: 1)
-        tile1?.printCoordinateEdges()
+        let tile0 = builder.loadFromPlist(TileWithId: 0)
+
         
-        tile1?.rotateTile()
-        
-        tile1?.printCoordinateEdges()
-        
-        print("\nTILE2")
         let tile2 = builder.loadFromPlist(TileWithId: 2)
-        tile2?.printCoordinateEdges()
-        
         tile2?.rotateTile()
-        tile2?.printCoordinateEdges()
-        
-        print("\nTILE3")
-        let tile3 = builder.loadFromPlist(TileWithId: 3)
-        tile3?.printCoordinateEdges()
-        
-        tile3?.rotateTile()
-        
-        tile3?.printCoordinateEdges()
-//
-        
+        tile2?.rotateTile()
+        tile2?.rotateTile()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

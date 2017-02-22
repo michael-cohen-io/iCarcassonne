@@ -151,13 +151,27 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
         self.coordinates[.NORTHEAST]?.terrains[.EAST] = coordCopy[.NORTHWEST]?.terrains[.NORTH]
         self.coordinates[.EAST]?.terrains[.EAST] = coordCopy[.NORTH]?.terrains[.NORTH]
         self.coordinates[.SOUTHEAST]?.terrains[.EAST] = coordCopy[.NORTHEAST]?.terrains[.NORTH]
-//
+
     }
     
     
     private func rotateEdgeNodes() {
+     
+        let tempNorth = self.edgeNodes[.NORTH]
+        self.edgeNodes[.NORTH] = self.edgeNodes[.WEST]
+        self.edgeNodes[.WEST] = self.edgeNodes[.SOUTH]
+        self.edgeNodes[.SOUTH] = self.edgeNodes[.EAST]
+        self.edgeNodes[.EAST] = tempNorth
+        
+        //rotate the neighbors of all nodes in this tile
+        for (_, node) in self.nodes! {
+            if !node.rotateNeighbors() {
+                print ("error rotating the neighbors of \(node)")
+            }
+        }
         
     }
+    
     
     
     //Helper methods
@@ -181,6 +195,19 @@ class Tile: Prototype, CustomStringConvertible, Equatable {
         str += "\((self.coordinates[.SOUTHWEST]?.terrains[.WEST])!) | \t\t\t| \((self.coordinates[.SOUTHEAST]?.terrains[.EAST])!)\n"
         str += "\((self.coordinates[.SOUTHWEST]?.terrains[.SOUTH])!) | \((self.coordinates[.SOUTH]?.terrains[.SOUTH])!) | \((self.coordinates[.SOUTHEAST]?.terrains[.SOUTH])!)\n"
         
+        
+        print(str)
+    }
+    
+    func printEdgeNodes() {
+        var str = "Edge Nodes:\n"
+        str += "\((self.edgeNodes[.NORTH]?["N1"])!) | \((self.edgeNodes[.NORTH]?["N2"])!) | \((self.edgeNodes[.NORTH]?["N3"])!)\n"
+        str += "\((self.edgeNodes[.WEST]?["N3"])!) | \t\t\t\t\t| \((self.edgeNodes[.EAST]?["N1"])!)\n"
+        str += "------------------------------\n"
+        str += "\((self.edgeNodes[.WEST]?["N2"])!) | \t\t\t\t\t| \((self.edgeNodes[.EAST]?["N2"])!)\n"
+        str += "------------------------------\n"
+        str += "\((self.edgeNodes[.WEST]?["N1"])!) | \t\t\t\t\t| \((self.edgeNodes[.EAST]?["N3"])!)\n"
+        str += "\((self.edgeNodes[.SOUTH]?["N3"])!) | \((self.edgeNodes[.SOUTH]?["N2"])!) | \((self.edgeNodes[.SOUTH]?["N1"])!)\n"
         
         print(str)
     }

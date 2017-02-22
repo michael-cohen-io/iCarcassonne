@@ -60,6 +60,11 @@ class TileGrid {
             isGridEmpty = false
         }
         
+        if !self.connectNodes(newTile: t, x_pos: x, y_pos:y) {
+            print("TileGrid: error connecting edge nodes of \(t)")
+            return false
+        }
+        
         tiles[x][y] = t
         return true
     }
@@ -123,5 +128,120 @@ class TileGrid {
     
     private func terrainTypesMatch(Terrain1 t1: TerrainType, Terrain2 t2: TerrainType) -> Bool {
         return t1 == t2 || t2 == .NullTerrain
+    }
+    
+    private func connectNodes(newTile t: Tile, x_pos x: Int, y_pos y: Int) -> Bool {
+        //Attempt to connect tile's north to above's south edges
+        if (y-1 >= 0) {
+            let neighbor = tiles[x][y-1]
+            if neighbor != nullTile {
+                print("DELETE: Connecting \(t.id) to \(neighbor.id)")
+                if !connectEdge(tile1: t, direction1: .NORTH, tile2: neighbor, direction2: .SOUTH) {
+                    print("North err")
+                    return false
+                }
+            }
+        }
+        
+        //Attempt to connect tile's west to right's east edges
+        if (x+1 <= gridWidth) {
+            let neighbor = tiles[x+1][y]
+            if neighbor != nullTile {
+                print("DELETE: Connecting \(t.id) to \(neighbor.id)")
+                if !connectEdge(tile1: t, direction1: .EAST, tile2: neighbor, direction2: .WEST) {
+                    print("East err")
+                    return false
+                }
+            }
+        }
+        
+        //Attempt to connect tile's south to belows north edges
+        if (y+1 <= gridHeight) {
+            let neighbor = tiles[x][y+1]
+            if neighbor != nullTile {
+                print("DELETE: Connecting \(t.id) to \(neighbor.id)")
+                if !connectEdge(tile1: t, direction1: .SOUTH, tile2: neighbor, direction2: .NORTH) {
+                    print("South err")
+                    return false
+                }
+            }
+        }
+        
+        //Attempt to connect tile's east to left's west edges
+        if (x-1 >= 0) {
+            let neighbor = tiles[x-1][y]
+            if neighbor != nullTile {
+                print("DELETE: Connecting \(t.id) to \(neighbor.id)")
+                if !connectEdge(tile1: t, direction1: .WEST, tile2: neighbor, direction2: .EAST) {
+                    print("West err")
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
+    
+    
+    //TODO: FINISH TESTING
+    private func connectEdge(tile1 t1: Tile, direction1 d1: Direction4,
+                             tile2 t2: Tile, direction2 d2: Direction4) -> Bool {
+        
+        //Error cases
+        guard let t1N1 = t1.edgeNodes[d1]?["N1"] else {
+            print("Error unwrapping t1.n1")
+            return false
+        }
+        
+        guard let t1N2 = t1.edgeNodes[d1]?["N2"] else {
+            print("Error unwrapping t1.n2")
+            return false
+        }
+        
+        guard let t1N3 = t1.edgeNodes[d1]?["N3"] else {
+            print("Error unwrapping t1.n3")
+            return false
+        }
+        
+        guard let t2N1 = t2.edgeNodes[d2]?["N1"] else {
+            print("Error unwrapping t2.n1")
+            return false
+        }
+        
+        guard let t2N2 = t2.edgeNodes[d2]?["N2"] else {
+            print("Error unwrapping t2.n2")
+            return false
+        }
+        
+        guard let t2N3 = t2.edgeNodes[d2]?["N3"] else {
+            print("Error unwrapping t2.n3")
+            return false
+        }
+        
+        //N1-N3
+        if !(t1N1.addNeighbor(node: t2N3, direction: d1)) {
+            return false
+        }
+        if !(t2N3.addNeighbor(node: t1N1, direction: d2)) {
+            return false
+        }
+        
+        //N2-N2
+        if !(t1N2.addNeighbor(node: t2N2, direction: d1)) {
+            return false
+        }
+        if !(t2N2.addNeighbor(node: t1N2, direction: d2)) {
+            return false
+        }
+        
+        //N3-N1
+        if !(t1N3.addNeighbor(node: t2N1, direction: d1)) {
+            return false
+        }
+        if !(t2N1.addNeighbor(node: t1N3, direction: d2)) {
+            return false
+        }
+        
+        return true
     }
 }

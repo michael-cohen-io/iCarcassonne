@@ -11,9 +11,13 @@ import XCTest
 
 class iCarcassonneTests: XCTestCase {
     
+    var tile1: Tile?
+    var tileID = 1
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let builder = TileBuilder(plist: "Tile_Try1")
+        tile1 = builder.loadFromPlist(TileWithId: tileID)!
     }
     
     override func tearDown() {
@@ -21,9 +25,8 @@ class iCarcassonneTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testRotation() {
+
     }
     
     func testPerformanceExample() {

@@ -20,15 +20,9 @@ class ViewController: UIViewController {
         skView.showsDrawCount = true
         
         
-        let builder = TileBuilder(plist: "Tile_Try1")
-        let tile0 = builder.loadFromPlist(TileWithId: 0)
 
         
-        let tile2 = builder.loadFromPlist(TileWithId: 2)
-        tile2?.rotateTile()
-        tile2?.rotateTile()
-        tile2?.rotateTile()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

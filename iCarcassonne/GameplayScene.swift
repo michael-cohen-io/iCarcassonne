@@ -21,10 +21,18 @@ class GameplayScene: SKScene {
     }
     
     func createContent() {
-        self.backgroundColor = SKColor.blue
+        self.backgroundColor = SKColor.green
         self.scaleMode = .aspectFill
         
-        self.addChild(createTileNode())
+        let builder = TileBuilder(plist: "Tile_Try1")
+        let tile0 = builder.loadFromPlist(TileWithId: 0)
+        let tile0Sprite = SKNodeTextTile(withTile: tile0!, x_pos: (Int(self.frame.size.width) / 2), y_pos: (Int(self.frame.size.height) / 2))
+        self.addChild(tile0Sprite)
+        
+//        let tile2 = builder.loadFromPlist(TileWithId: 2)
+//        tile2?.rotateTile()
+//        tile2?.rotateTile()
+//        tile2?.rotateTile()
     }
     
     

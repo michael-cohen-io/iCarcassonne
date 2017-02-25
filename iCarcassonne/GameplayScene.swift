@@ -24,15 +24,25 @@ class GameplayScene: SKScene {
         self.backgroundColor = SKColor.green
         self.scaleMode = .aspectFill
         
+        let grid = TileGrid(width: 10, height: 10)
+        
         let builder = TileBuilder(plist: "Tile_Try1")
         let tile0 = builder.loadFromPlist(TileWithId: 0)
         let tile0Sprite = SKNodeTextTile(withTile: tile0!, x_pos: (Int(self.frame.size.width) / 2), y_pos: (Int(self.frame.size.height) / 2))
         self.addChild(tile0Sprite)
         
-//        let tile2 = builder.loadFromPlist(TileWithId: 2)
-//        tile2?.rotateTile()
-//        tile2?.rotateTile()
-//        tile2?.rotateTile()
+        let tile2 = builder.loadFromPlist(TileWithId: 2)
+        tile2?.rotateTile()
+        tile2?.rotateTile()
+        tile2?.rotateTile()
+        
+        grid.addTile(aTile: tile0!, x_pos: 0, y_pos: 0)
+        grid.addTile(aTile: tile2!, x_pos: 1, y_pos: 0)
+        
+        let traverser = NodeTraverser(grid: grid)
+        
+        let meepNode = tile0?.nodes?["C1"]
+        print("Points: \(traverser.getGraphSize(forInitialNode: meepNode!))")
     }
     
     

@@ -244,4 +244,18 @@ class TileGrid {
         
         return true
     }
+    
+    func clearMarkedNodes() {
+        for column in tiles {
+            for tile in column {
+                if tile == self.nullTile {
+                    continue
+                }
+                
+                for (_, node) in tile.nodes! {
+                    node.isVisited = false
+                }
+            }
+        }
+    }
 }

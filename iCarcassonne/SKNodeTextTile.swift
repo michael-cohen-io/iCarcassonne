@@ -16,8 +16,8 @@ class SKNodeTextTile: SKSpriteNode {
     
     init(withTile t: Tile, x_pos x: Int, y_pos y: Int) {
         coordinates = t.coordinates
-        super.init(texture: nil, color: .darkGray, size: CGSize(width: 150, height: 150))
-        
+        super.init(texture: nil, color: .white, size: CGSize(width: 155, height: 155))
+        self.addChild(SKSpriteNode(texture: nil, color: .darkGray, size: CGSize(width: 150, height: 150)))
         loadEdges()
         self.position = CGPoint(x: x, y: y)
     }

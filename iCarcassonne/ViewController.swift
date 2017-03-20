@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.showsDrawCount = true
-        
+        skView.ignoresSiblingOrder = true
         
 
         
@@ -26,8 +26,10 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let mainScene = GameplayScene(size: CGSize(width: 768, height: 1024))
         let skView = self.view as! SKView
+        let mainScene = GameplayScene(size: skView.frame.size)
+
+        mainScene.scaleMode = .aspectFill
         
         skView.presentScene(mainScene)
     }

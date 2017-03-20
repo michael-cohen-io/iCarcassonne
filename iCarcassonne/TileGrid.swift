@@ -11,7 +11,7 @@ import Foundation
 
 class TileGrid {
     
-    private var tiles: [[Tile]]
+    var tiles: [[Tile]]
     private let nullTile = Tile()
     
     let gridHeight: Int
@@ -135,7 +135,6 @@ class TileGrid {
         if (y-1 >= 0) {
             let neighbor = tiles[x][y-1]
             if neighbor != nullTile {
-                print("DELETE: Connecting \(t.id) to \(neighbor.id)")
                 if !connectEdge(tile1: t, direction1: .NORTH, tile2: neighbor, direction2: .SOUTH) {
                     print("North err")
                     return false
@@ -147,7 +146,6 @@ class TileGrid {
         if (x+1 <= gridWidth) {
             let neighbor = tiles[x+1][y]
             if neighbor != nullTile {
-                print("DELETE: Connecting \(t.id) to \(neighbor.id)")
                 if !connectEdge(tile1: t, direction1: .EAST, tile2: neighbor, direction2: .WEST) {
                     print("East err")
                     return false
@@ -159,7 +157,6 @@ class TileGrid {
         if (y+1 <= gridHeight) {
             let neighbor = tiles[x][y+1]
             if neighbor != nullTile {
-                print("DELETE: Connecting \(t.id) to \(neighbor.id)")
                 if !connectEdge(tile1: t, direction1: .SOUTH, tile2: neighbor, direction2: .NORTH) {
                     print("South err")
                     return false
@@ -171,7 +168,6 @@ class TileGrid {
         if (x-1 >= 0) {
             let neighbor = tiles[x-1][y]
             if neighbor != nullTile {
-                print("DELETE: Connecting \(t.id) to \(neighbor.id)")
                 if !connectEdge(tile1: t, direction1: .WEST, tile2: neighbor, direction2: .EAST) {
                     print("West err")
                     return false
@@ -257,5 +253,9 @@ class TileGrid {
                 }
             }
         }
+    }
+    
+    func isNullNode(aTile t: Tile) -> Bool {
+        return t == self.nullTile
     }
 }

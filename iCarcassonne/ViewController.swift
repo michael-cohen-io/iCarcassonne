@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import GoogleCast.GCKUICastButton
 
 class ViewController: UIViewController {
 
@@ -21,17 +22,18 @@ class ViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         
 
-        
+        let castButton = GCKUICastButton.init(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        castButton.tintColor = UIColor.white
+        let item = UIBarButtonItem.init(customView: castButton)
+        self.navigationItem.rightBarButtonItem = item
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let skView = self.view as! SKView
-        let mainScene = GameplayScene(size: skView.frame.size)
-
-        mainScene.scaleMode = .aspectFill
+        let startScene = StartScene(size: skView.frame.size)
         
-        skView.presentScene(mainScene)
+        skView.presentScene(startScene)
     }
 
     override func didReceiveMemoryWarning() {

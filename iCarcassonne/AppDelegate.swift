@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import GoogleCast
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GCKLoggerDelegate {
 
     var window: UIWindow?
-
+    
+    let kReceiverAppID = "iCarcassonneMuchen"
+    let kDebugLoggingEnabled = true
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let options = GCKCastOptions.init(receiverApplicationID: kReceiverAppID)
+        GCKCastContext.setSharedInstanceWith(options)
+        
+        GCKLogger.sharedInstance().delegate = self
         
         return true
     }
@@ -42,5 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    
+    func logMessage(_ message: String, fromFunction function: String) {
+        if kDebugLoggingEnabled {
+            print("\(function) \(message)")
+        }
+    }
 }
 

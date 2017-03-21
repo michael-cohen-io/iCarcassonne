@@ -42,7 +42,7 @@ class GameplayScene: SKScene {
         
     }
     
-    func createContent() {
+    private func createContent() {
         self.backgroundColor = SKColor.green
         self.scaleMode = .aspectFill
         
